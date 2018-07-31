@@ -36,6 +36,7 @@ function createWindow() {
   */
   if (true) {
     mainWindow.loadURL("http://localhost:3000");
+    mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadURL(
       url.format({
@@ -47,7 +48,7 @@ function createWindow() {
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+
   console.log("creatingWindow", app.getAppPath());
 
   // Emitted when the window is closed.
