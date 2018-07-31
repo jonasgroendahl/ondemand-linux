@@ -8,7 +8,20 @@ let mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ webPreferences: { webSecurity: false } });
+
+  if (true) {
+    mainWindow = new BrowserWindow({
+      webPreferences: { webSecurity: false },
+      fullscreen: true,
+      frame: false
+    });
+  } else {
+    mainWindow = new BrowserWindow({
+      webPreferences: { webSecurity: false },
+      fullscreen: true,
+      frame: false
+    });
+  }
   /*
   protocol.interceptFileProtocol(
     "file",
@@ -21,16 +34,17 @@ function createWindow() {
     }
   );
   */
-  /*
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "../build/index.html"),
-      protocol: "file:",
-      slashes: true
-    })
-  );
-  */
-  mainWindow.loadURL("http://localhost:3000");
+  if (true) {
+    mainWindow.loadURL("http://localhost:3000");
+  } else {
+    mainWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, "../build/index.html"),
+        protocol: "file:",
+        slashes: true
+      })
+    );
+  }
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

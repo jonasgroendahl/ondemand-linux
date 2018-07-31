@@ -10,6 +10,7 @@ import {
   PlayArrow
 } from "@material-ui/icons";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 export default class Main extends Component {
   state = {
@@ -34,7 +35,7 @@ export default class Main extends Component {
   };
 
   componentDidMount() {
-    console.log("Main mounted!");
+    console.log("Main mounted!", this.props);
     setInterval(() => this.setState({ time: format(new Date(), "HH:mm:ss") }));
   }
 
@@ -48,25 +49,27 @@ export default class Main extends Component {
           <div className="featured-list">
             <ChevronLeft className="svg" />
             {videos.map(video => (
-              <img
-                src={`https://nfoo-server.com/wexerpreview/13_${video.filename.substr(
-                  0,
-                  video.filename.length - 4
-                )}Square.jpg`}
-                height={35}
-              />
+              <Link to="/workout/1">
+                <img
+                  src={`https://nfoo-server.com/wexerpreview/13_${video.filename.substr(
+                    0,
+                    video.filename.length - 4
+                  )}Square.jpg`}
+                  height={35}
+                />
+              </Link>
             ))}
             <ChevronRight className="svg" />
           </div>
           <div className="filter-list">
             <h1>Favourites</h1>
-            <span className="filter-list-seperator">/</span>
+
             <h1>Level</h1>
-            <span className="filter-list-seperator">/</span>
+
             <h1>Duration</h1>
-            <span className="filter-list-seperator">/</span>
+
             <h1>Type</h1>
-            <span className="filter-list-seperator">/</span>
+
             <h1>Provider</h1>
           </div>
           <div className="main-bottom-menu">
